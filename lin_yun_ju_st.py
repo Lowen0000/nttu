@@ -54,7 +54,7 @@ all_opps = sorted(list(lin_base['opponent'].dropna().unique()))
 all_matches = sorted(list(lin_base['match'].dropna().unique()))
 all_games = sorted(list(lin_base['games'].dropna().unique()))
 
-skill_map = {'side-spin drive': '反手擰拉', 'drive': '相持', 'serve': '發球', 'push': '劈長/擺短', 'block': '防守借力', 'flick': '挑打', 'chop': '削球'}
+skill_map = {'side-spin drive': '反手擰拉', 'drive': '相持', 'serve': '發球', 'push': '劈長/擺短', 'block': '防守借力', 'filp': '挑打', 'chop': '削球'}
 
 st.title("🛡️ 林昀儒戰術情蒐報告")
 st.write("114-2 運動大數據與視覺化分析專題研究/姓名羅主文")
@@ -128,7 +128,7 @@ with tab1:
         st.plotly_chart(fig_sun, use_container_width=True)
         
         best_stroke = tact_df.groupby('stroke_name')['次數'].sum().idxmax()
-        st.caption("第一板是發球，第二板是接發球")
+        st.caption("第一板是發球\第二板是接發球\第三板為發球搶攻")
         with st.expander("🗣️ 教練動態戰術解讀（點此展開）", expanded=False):
             st.markdown(f"""
             **✅ 戰術決策樹判讀（點擊圓環可放大）：**
