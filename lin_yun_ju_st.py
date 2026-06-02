@@ -54,10 +54,10 @@ all_opps = sorted(list(lin_base['opponent'].dropna().unique()))
 all_matches = sorted(list(lin_base['match'].dropna().unique()))
 all_games = sorted(list(lin_base['games'].dropna().unique()))
 
-skill_map = {'side-spin drive': '反手擰拉', 'drive': '相持/暴衝', 'serve': '發球搶攻', 'push': '劈長/搓球', 'block': '防守借力', 'flick': '挑打', 'chop': '削球'}
+skill_map = {'side-spin drive': '反手擰拉', 'drive': '相持', 'serve': '發球', 'push': '劈長/擺短', 'block': '防守借力', 'flick': '挑打', 'chop': '削球'}
 
 st.title("🛡️ 林昀儒戰術情蒐報告")
-
+st.write("114-2 運動大數據與視覺化分析專題研究/姓名羅主文")
 # ================= 3. 側邊欄過濾 =================
 st.sidebar.header("🎛️ 動態情蒐過濾")
 if 'scout_mode' not in st.session_state: st.session_state.scout_mode = 'all'
@@ -128,7 +128,7 @@ with tab1:
         st.plotly_chart(fig_sun, use_container_width=True)
         
         best_stroke = tact_df.groupby('stroke_name')['次數'].sum().idxmax()
-        
+        st.caption("第一板是發球，第二板是接發球")
         with st.expander("🗣️ 教練動態戰術解讀（點此展開）", expanded=False):
             st.markdown(f"""
             **✅ 戰術決策樹判讀（點擊圓環可放大）：**
@@ -164,7 +164,7 @@ with tab2:
             st.markdown(f"""
             **✅ 擊球流速與戰鬥節奏：**
             * ⚡ **您的黃金快攻區：** 得分球的平均擊球間隔為 **{won_tempo:.2f} 秒**。
-            * ⚠️ **您的失誤危險區：** 當擊球間隔被拖慢至 **{lost_tempo:.2f} 秒** 附近時，失誤率急遽攀升。
+            * ⚠️ **您的失誤危險區：** 當擊球間隔被拖慢至0.65秒附近時，失誤率急遽攀升。
             * 🎯 **教練建議：** 記住 **{won_tempo:.2f} 秒** 的肌肉反應。如果對手把球速拖慢（速度條往右側延伸），請**千萬不要跟著退台**，立刻迎前借力，把球速強行帶回你的快攻甜區！
             """)
 
