@@ -57,7 +57,7 @@ all_games = sorted(list(lin_base['games'].dropna().unique()))
 skill_map = {'side-spin drive': '反手擰拉', 'drive': '相持', 'serve': '發球', 'push': '劈長/擺短', 'block': '防守借力', 'filp': '挑打', 'chop': '削球'}
 
 st.title("🛡️ 林昀儒戰術情蒐報告")
-st.write("114-2 運動大數據與視覺化分析專題研究/羅主文")
+st.title("114-2 運動大數據與視覺化分析專題研究/羅主文")
 # ================= 3. 側邊欄過濾 =================
 st.sidebar.header("🎛️ 動態情蒐過濾")
 if 'scout_mode' not in st.session_state: st.session_state.scout_mode = 'all'
